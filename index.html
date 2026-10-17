@@ -14,7 +14,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0f1a'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EPH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Hahmlet:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400&family=Rubik:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root {
   --ink: #0a0f1a;
@@ -28,9 +29,11 @@
   --d-text: #eef1f7;
   --d-muted: #98a1b6;
   --d-line: rgba(255, 255, 255, .14);
-  --serif: "Playfair Display", "Hahmlet", Georgia, "Times New Roman", serif;
-  --sans: "IBM Plex Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* EN: Playfair Display + Rubik (Kirkland & Ellis 참고) · KO: Pretendard (디센트 참고) */
+  --serif: "Playfair Display", "Pretendard Variable", Pretendard, Georgia, "Times New Roman", serif;
+  --sans: "Rubik", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono: "Rubik", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  --ko: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -73,9 +76,15 @@ header.nav { position: sticky; top: 0; z-index: 50; background: var(--paper); bo
 .hero-in { position: relative; display: grid; grid-template-columns: 1.2fr .8fr; gap: 64px; align-items: end; padding: 72px 0 80px; }
 .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
 .hero .eyebrow { color: var(--accent-dk); }
-h1.title { margin-top: 22px; font-family: var(--serif); font-weight: 800; font-size: clamp(3.4rem, 8.6vw, 7rem); line-height: .95; letter-spacing: -.025em; }
+h1.title { margin-top: 22px; font-family: var(--serif); font-weight: 400; font-size: clamp(3.6rem, 9vw, 7.4rem); line-height: .98; letter-spacing: -.01em; }
 body { text-rendering: optimizeLegibility; font-kerning: normal; }
 h2, h3 { font-kerning: normal; }
+
+/* language-specific type: Korean = Pretendard (bold, tight tracking), English body = Rubik light */
+h1[lang="ko"], h2[lang="ko"], h3[lang="ko"] { font-family: var(--ko) !important; font-weight: 700 !important; letter-spacing: -.035em !important; }
+p[lang="ko"], li[lang="ko"], .plate b span[lang="ko"], .fact b span[lang="ko"], .chip span[lang="ko"], .lnk b span[lang="ko"], .btn span[lang="ko"] { font-family: var(--ko); letter-spacing: -.015em; }
+p[lang="en"], li[lang="en"] { font-weight: 300; }
+.lead[lang="en"], .card .sub[lang="en"] { font-weight: 300; }
 h1.title .dot { color: var(--accent-dk); }
 .triad { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 0; font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; border-top: 1px solid var(--d-line); border-bottom: 1px solid var(--d-line); width: fit-content; }
 .triad span { padding: 10px 18px; border-right: 1px solid var(--d-line); }
@@ -122,7 +131,7 @@ section.block { padding: 96px 0 104px; }
 .sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding-top: 20px; border-top: 2px solid var(--ink); margin-bottom: 48px; }
 .sec-no { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: .08em; color: var(--accent); }
 .sec-no span { color: var(--muted); font-weight: 500; margin-left: 10px; text-transform: uppercase; letter-spacing: .12em; }
-.sec-head h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.9rem, 3.8vw, 2.9rem); line-height: 1.2; letter-spacing: -.02em; }
+.sec-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.9rem, 3.8vw, 2.9rem); line-height: 1.2; letter-spacing: -.02em; }
 .sec-head p { margin-top: 12px; color: var(--muted); max-width: 40em; }
 
 /* ---------- overview cards ---------- */
@@ -132,7 +141,7 @@ section.block { padding: 96px 0 104px; }
 .card:hover::before, .card:focus-within::before { transform: scaleX(1); }
 .card .no { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
 .card .no b { color: var(--accent); font-weight: 600; }
-.card h3 { margin-top: 18px; font-family: var(--serif); font-weight: 700; font-size: 2.1rem; line-height: 1.1; letter-spacing: -.02em; }
+.card h3 { margin-top: 18px; font-family: var(--serif); font-weight: 400; font-size: 2.3rem; line-height: 1.1; letter-spacing: -.005em; }
 .card .sub { margin-top: 8px; color: var(--muted); font-size: 15px; }
 .card ul.key { margin-top: 22px; display: grid; border-top: 1px solid var(--line); }
 .card ul.key li { padding: 11px 0 11px 22px; position: relative; font-size: 15px; color: var(--ink-2); border-bottom: 1px solid var(--line); }
@@ -161,7 +170,7 @@ section.block { padding: 96px 0 104px; }
 .spec-card + .spec-card { border-left: 1px solid var(--d-line); }
 .spec-tag { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-dk); }
 .spec-tag i { font-style: normal; color: var(--d-muted); }
-.spec-card h3 { margin-top: 16px; font-family: var(--serif); font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.3rem); line-height: 1.2; letter-spacing: -.02em; }
+.spec-card h3 { margin-top: 16px; font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3.2vw, 2.3rem); line-height: 1.2; letter-spacing: -.02em; }
 .spec-card p { margin-top: 12px; color: #bfc6d6; font-size: 15px; max-width: 32em; }
 .sub-label { display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; }
 .sub-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
@@ -182,7 +191,7 @@ section.block { padding: 96px 0 104px; }
 .step::before { content: ""; position: absolute; top: -6px; left: 0; width: 11px; height: 11px; background: var(--paper); border: 2px solid var(--ink); }
 .step:last-child::before { background: var(--accent); border-color: var(--accent); }
 .step .n { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .1em; }
-.step h3 { margin-top: 8px; font-family: var(--serif); font-weight: 700; font-size: 1.3rem; }
+.step h3 { margin-top: 8px; font-family: var(--serif); font-weight: 400; font-size: 1.4rem; }
 .step p { margin-top: 6px; font-size: 14px; color: var(--muted); line-height: 1.55; }
 
 /* ---------- contact ---------- */
